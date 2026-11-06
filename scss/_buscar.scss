@@ -1,0 +1,38 @@
+// =============================================================
+// _buscar.scss
+// Página de búsqueda: cabecera de la página y resultados.
+// =============================================================
+
+.busqueda {
+  padding-block: 1.5rem 2rem;
+
+  &__titulo {
+    margin-bottom: 1.25rem;
+    font-size: 1.5rem;
+    font-weight: 500;
+
+    @include desde(md) {
+      font-size: 2rem;
+    }
+  }
+
+  &__resultados {
+    margin: 2rem 0 0;
+    color: $st-primario;
+    font-size: 1.5rem;
+    font-weight: 500;
+
+    @include desde(md) {
+      color: var(--st-texto);
+      font-size: 2rem;
+    }
+  }
+
+  &__contador {
+    color: var(--bs-secondary-color);
+  }
+
+  .resultados {
+    padding-block: .75rem;
+  }
+}

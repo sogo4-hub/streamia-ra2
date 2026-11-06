@@ -1,0 +1,125 @@
+// =============================================================
+// _formularios.scss
+// Campo de búsqueda del UI Kit, filtros y formulario de acceso.
+// =============================================================
+
+// ---------- Input › Buscar (UI Kit) ----------
+.buscador {
+  height: 3.25rem;
+  padding: .25rem 1.25rem;
+  border: 6px solid $st-input-trazo;           // Default
+  border-radius: 0;
+  background-color: $st-input-fondo;
+  color: $st-fondo;
+  font-size: 1.5rem;
+  @include transicion(background-color, border-color);
+
+  &::placeholder {
+    color: $st-input-trazo;
+    opacity: 1;
+  }
+
+  &:hover {
+    background-color: $st-input-hover;          // Hover
+  }
+
+  &:focus {
+    border-color: $st-input-foco;               // Focus
+    background-color: $st-input-hover;
+    box-shadow: none;
+    color: $st-fondo;
+  }
+
+  @include desde(md) {
+    height: 3.5rem;
+    font-size: 2rem;
+  }
+}
+
+// ---------- Filtros (Todos, Películas, Series, Género) ----------
+.filtros {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: .75rem;
+
+  @include desde(md) {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem 3.75rem;
+  }
+}
+
+.filtro {
+  min-height: 3.125rem;          // 50px
+  padding: 0 1rem;
+  border: 2px solid transparent;
+  border-radius: 0;
+  background-color: var(--st-chip-fondo);
+  color: $st-primario;
+  font-size: 1.5rem;
+  font-weight: 500;
+  text-align: left;
+  @include transicion(background-color, color, border-color);
+  @include foco-visible(var(--st-texto));
+
+  &:hover {
+    border-color: $st-primario;
+  }
+
+  &[aria-pressed="true"] {
+    background-color: $st-primario;
+    color: $st-texto;
+  }
+
+  @include desde(md) {
+    min-width: 15.25rem;         // 244px
+    font-size: 2rem;
+  }
+}
+
+// El select de género reutiliza el aspecto de los filtros
+.form-select.filtro {
+  background-color: var(--st-chip-fondo);
+  color: $st-primario;
+  padding-right: 3rem;
+
+  @include desde(md) {
+    width: auto;
+  }
+
+  &:focus {
+    border-color: $st-primario;
+    box-shadow: none;
+  }
+
+  option {
+    color: var(--bs-body-color);
+    font-size: 1rem;
+  }
+}
+
+// ---------- Modal de acceso ----------
+.modal-acceso {
+  .modal-content {
+    border: 1px solid var(--st-borde);
+    background-color: var(--st-superficie);
+    color: var(--st-texto);
+  }
+
+  .nav-pills {
+    --bs-nav-pills-link-active-bg: #{$st-primario};
+    --bs-nav-link-color: var(--st-texto);
+    --bs-nav-link-hover-color: #{$st-primario};
+  }
+
+  .form-control:focus,
+  .form-check-input:focus {
+    border-color: $st-primario;
+    box-shadow: 0 0 0 .2rem rgba($st-primario, .35);
+  }
+
+  .form-check-input:checked {
+    border-color: $st-primario;
+    background-color: $st-primario;
+  }
+}

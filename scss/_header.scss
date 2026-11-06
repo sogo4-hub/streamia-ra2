@@ -1,0 +1,144 @@
+// =============================================================
+// _header.scss
+// Cabecera y navbar con menú hamburguesa (Bootstrap collapse).
+// =============================================================
+
+.cabecera {
+  position: sticky;
+  top: 0;
+  z-index: $zindex-sticky;
+  border-bottom: 1px solid var(--st-borde);
+  background-color: var(--st-cabecera);
+  @include transicion(background-color, border-color);
+
+  .navbar {
+    min-height: 5rem; // 80px, alto de la cabecera en Figma
+  }
+
+  // Logo STREAMIA
+  .marca {
+    margin-right: 0;
+    color: $st-primario;
+    font-size: 1.75rem;
+    font-weight: 700;
+    letter-spacing: .02em;
+    @include foco-visible;
+
+    &:hover {
+      color: $st-primario-hover;
+      text-decoration: none;
+    }
+
+    @include desde(lg) {
+      font-size: 2rem;
+    }
+  }
+
+  // Enlaces del menú
+  .nav-link {
+    color: var(--st-texto);
+    font-weight: 500;
+    @include transicion(color);
+    @include foco-visible;
+
+    &:hover,
+    &[aria-current="page"] {
+      color: $st-primario;
+    }
+
+    &[aria-current="page"] {
+      text-decoration: underline;
+      text-decoration-thickness: 2px;
+      text-underline-offset: .5rem;
+    }
+  }
+
+  // Menú desplegado en móvil
+  .navbar-collapse {
+    @media (max-width: 991.98px) {
+      padding-bottom: 1rem;
+      border-top: 1px solid var(--st-borde);
+    }
+  }
+
+  // Escritorio: menú principal centrado, como en Figma
+  .menu-principal {
+    @include desde(lg) {
+      flex-grow: 1;
+      justify-content: center;
+      gap: 3rem;
+    }
+
+    @include desde(xl) {
+      gap: 6rem;
+    }
+  }
+
+  .menu-usuario {
+    @include desde(lg) {
+      gap: 1.5rem;
+    }
+  }
+
+  // Botón hamburguesa
+  .navbar-toggler {
+    border-color: var(--st-borde);
+    @include foco-visible;
+
+    &:focus {
+      box-shadow: none;
+    }
+  }
+}
+
+// Acciones siempre visibles: tema y perfil
+.acciones {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+}
+
+.btn-icono {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+  min-width: 2.75rem;  // 44px: objetivo táctil mínimo
+  height: 2.75rem;
+  padding: 0 .625rem;
+  border: 1px solid var(--st-borde);
+  border-radius: 50rem;
+  background-color: transparent;
+  color: var(--st-texto);
+  font-weight: 500;
+  @include transicion(color, border-color, background-color);
+  @include foco-visible;
+
+  svg {
+    width: 1.25rem;
+    height: 1.25rem;
+    flex-shrink: 0;
+  }
+
+  &:hover {
+    border-color: $st-primario;
+    color: $st-primario;
+  }
+}
+
+// Botón de tema: luna en modo claro, sol en modo oscuro
+.btn-tema {
+  .icono-sol {
+    display: none;
+  }
+
+  [data-bs-theme="dark"] & {
+    .icono-luna {
+      display: none;
+    }
+
+    .icono-sol {
+      display: block;
+    }
+  }
+}

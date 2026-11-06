@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="es" data-bs-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Ficha de una película o serie del catálogo de STREAMIA.">
+  <title>STREAMIA · Senderos de gloria</title>
+
+  <!-- CSS compilado desde /scss/style.scss (Bootstrap 5.3 + estilos propios + fuente Inter local) -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Aplica el tema guardado antes de pintar la página (evita parpadeos) -->
+  <script>
+    try {
+      document.documentElement.setAttribute("data-bs-theme", localStorage.getItem("streamia-tema") || "light");
+    } catch (error) { /* sin localStorage: tema claro */ }
+  </script>
+</head>
+<body>
+  <a class="salto-contenido" href="#contenido">Saltar al contenido</a>
+
+  <header class="cabecera">
+    <nav class="navbar navbar-expand-lg" aria-label="Navegación principal">
+      <div class="container-fluid px-3 px-md-4 px-xl-5">
+        <a class="navbar-brand marca" href="index.html">STREAMIA</a>
+
+        <div class="acciones ms-auto order-lg-last">
+          <button type="button" class="btn-icono btn-tema" id="btn-tema" aria-pressed="false" aria-label="Activar modo oscuro">
+            <svg class="icono-luna" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+            <svg class="icono-sol" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+            <span class="btn-tema__texto d-none d-xxl-inline">Modo oscuro</span>
+          </button>
+          <button type="button" class="btn-icono" data-bs-toggle="modal" data-bs-target="#modal-acceso" aria-label="Perfil: iniciar sesión o registrarse">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>
+            <span class="d-none d-lg-inline">Perfil</span>
+          </button>
+        </div>
+
+        <button class="navbar-toggler ms-2" type="button" data-bs-toggle="collapse" data-bs-target="#menu" aria-controls="menu" aria-expanded="false" aria-label="Abrir o cerrar el menú">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="menu">
+          <ul class="navbar-nav menu-principal">
+            <li class="nav-item"><a class="nav-link" href="index.html" data-nav="inicio">Inicio</a></li>
+            <li class="nav-item"><a class="nav-link" href="buscar.html?tipo=pelicula" data-nav="peliculas">Películas</a></li>
+            <li class="nav-item"><a class="nav-link" href="buscar.html?tipo=serie" data-nav="series">Series</a></li>
+            <li class="nav-item"><a class="nav-link" href="buscar.html?lista=mi-lista" data-nav="mi-lista">Mi lista</a></li>
+          </ul>
+          <ul class="navbar-nav menu-usuario me-lg-3">
+            <li class="nav-item"><a class="nav-link" href="buscar.html" data-nav="buscar">Buscar</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main id="contenido">
+    <!-- Ficha de un título. Sin parámetro muestra Senderos de gloria; con
+         detalle.html?id=... script.js la rellena con los datos de js/catalogo.js -->
+    <article class="detalle" id="detalle" aria-labelledby="detalle-titulo">
+      <div class="container-fluid px-3 px-md-4 px-xl-5">
+        <div class="row g-4">
+          <div class="col-12 order-2 order-md-1">
+            <h1 class="detalle__titulo" id="detalle-titulo">Senderos de gloria</h1>
+            <p class="detalle__datos" id="detalle-datos">1957 · 88 min · Bélico</p>
+            <div class="detalle__acciones">
+              <button type="button" class="btn btn-primary btn-ficha" id="btn-reproducir"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>Reproducir</button>
+              <button type="button" class="btn btn-primary btn-ficha btn-mi-lista" data-id="senderos-de-gloria" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>Mi lista</button>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-4 col-xl-3 order-1 order-md-2">
+            <figure class="detalle__poster">
+              <img class="imagen-adaptable" id="detalle-cartel" src="img/senderos-de-gloria.jpg" width="600" height="900" alt="Cartel de Senderos de gloria">
+            </figure>
+          </div>
+
+          <div class="col-12 col-md-8 col-xl-9 order-3">
+            <h2 class="detalle__subtitulo">Argumento</h2>
+            <p class="detalle__argumento" id="detalle-argumento">Durante la Primera Guerra Mundial, el coronel Dax intenta defender a tres soldados franceses acusados de cobardía tras el fracaso de un ataque imposible. El juicio enfrenta la vida de los hombres con los intereses del alto mando.</p>
+            <h2 class="detalle__subtitulo">Ficha técnica</h2>
+            <dl class="ficha" id="detalle-ficha">
+              <div><dt>Título original:</dt> <dd>Paths of Glory</dd></div>
+              <div><dt>Año:</dt> <dd>1957</dd></div>
+              <div><dt>Duración:</dt> <dd>88 min</dd></div>
+              <div><dt>Dirección:</dt> <dd>Stanley Kubrick</dd></div>
+              <div><dt>Género:</dt> <dd>Bélico</dd></div>
+              <div><dt>Reparto:</dt> <dd>Kirk Douglas, Ralph Meeker, Adolphe Menjou, George Macready, Wayne Morris, Richard Anderson</dd></div>
+            </dl>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Se muestra si el id de la URL no existe en el catálogo -->
+    <section class="detalle" id="detalle-no-encontrado" aria-labelledby="no-encontrado-titulo" hidden>
+      <div class="container-fluid px-3 px-md-4 px-xl-5">
+        <h1 id="no-encontrado-titulo" class="detalle__titulo">Título no encontrado</h1>
+        <p>El título que buscas no está en el catálogo de STREAMIA.</p>
+        <a class="btn btn-primary" href="buscar.html">Ir a Buscar</a>
+      </div>
+    </section>
+
+    <section class="categoria" id="relacionadas" aria-labelledby="relacionadas-titulo">
+      <div class="container-fluid px-3 px-md-4 px-xl-5">
+        <h2 id="relacionadas-titulo" class="titulo-relacionadas">Recomendaciones relacionadas</h2>
+        <ul class="fila row flex-nowrap g-3" id="lista-relacionadas">
+          <li class="col-7 col-sm-5 col-md-4 col-lg-3 col-xl-2">
+            <article class="tarjeta">
+              <img class="tarjeta__cartel" src="img/la-chaqueta-metalica.jpg" width="600" height="900" alt="Cartel de La chaqueta metálica" loading="lazy">
+              <div class="tarjeta__cuerpo">
+                <h3 class="tarjeta__titulo"><a href="detalle.html?id=la-chaqueta-metalica" class="stretched-link">La chaqueta metálica</a></h3>
+                <p class="tarjeta__meta">1987 · Película · Bélico</p>
+              </div>
+            </article>
+          </li>
+          <li class="col-7 col-sm-5 col-md-4 col-lg-3 col-xl-2">
+            <article class="tarjeta">
+              <img class="tarjeta__cartel" src="img/apocalypse-now.jpg" width="600" height="900" alt="Cartel de Apocalypse Now" loading="lazy">
+              <div class="tarjeta__cuerpo">
+                <h3 class="tarjeta__titulo"><a href="detalle.html?id=apocalypse-now" class="stretched-link">Apocalypse Now</a></h3>
+                <p class="tarjeta__meta">1979 · Película · Bélico</p>
+              </div>
+            </article>
+          </li>
+          <li class="col-7 col-sm-5 col-md-4 col-lg-3 col-xl-2">
+            <article class="tarjeta">
+              <img class="tarjeta__cartel" src="img/salvar-al-soldado-ryan.jpg" width="600" height="900" alt="Cartel de Salvar al soldado Ryan" loading="lazy">
+              <div class="tarjeta__cuerpo">
+                <h3 class="tarjeta__titulo"><a href="detalle.html?id=salvar-al-soldado-ryan" class="stretched-link">Salvar al soldado Ryan</a></h3>
+                <p class="tarjeta__meta">1998 · Película · Bélico</p>
+              </div>
+            </article>
+          </li>
+          <li class="col-7 col-sm-5 col-md-4 col-lg-3 col-xl-2">
+            <article class="tarjeta">
+              <img class="tarjeta__cartel" src="img/1917.jpg" width="600" height="900" alt="Cartel de 1917" loading="lazy">
+              <div class="tarjeta__cuerpo">
+                <h3 class="tarjeta__titulo"><a href="detalle.html?id=1917" class="stretched-link">1917</a></h3>
+                <p class="tarjeta__meta">2019 · Película · Bélico</p>
+              </div>
+            </article>
+          </li>
+          <li class="col-7 col-sm-5 col-md-4 col-lg-3 col-xl-2">
+            <article class="tarjeta">
+              <img class="tarjeta__cartel" src="img/sin-novedad-en-el-frente.jpg" width="600" height="900" alt="Cartel de Sin novedad en el frente" loading="lazy">
+              <div class="tarjeta__cuerpo">
+                <h3 class="tarjeta__titulo"><a href="detalle.html?id=sin-novedad-en-el-frente" class="stretched-link">Sin novedad en el frente</a></h3>
+                <p class="tarjeta__meta">2022 · Película · Bélico</p>
+              </div>
+            </article>
+          </li>
+          <li class="col-7 col-sm-5 col-md-4 col-lg-3 col-xl-2">
+            <article class="tarjeta">
+              <img class="tarjeta__cartel" src="img/hermanos-de-sangre.jpg" width="600" height="900" alt="Cartel de Hermanos de sangre" loading="lazy">
+              <div class="tarjeta__cuerpo">
+                <h3 class="tarjeta__titulo"><a href="detalle.html?id=hermanos-de-sangre" class="stretched-link">Hermanos de sangre</a></h3>
+                <p class="tarjeta__meta">2001 · Serie · Bélico</p>
+              </div>
+            </article>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Plantilla que script.js clona para crear las tarjetas relacionadas -->
+    <template id="plantilla-tarjeta">
+      <li class="col-7 col-sm-5 col-md-4 col-lg-3 col-xl-2">
+        <article class="tarjeta">
+          <img class="tarjeta__cartel" src="img/senderos-de-gloria.jpg" width="600" height="900" alt="" loading="lazy">
+          <div class="tarjeta__cuerpo">
+            <h3 class="tarjeta__titulo"><a href="detalle.html" class="stretched-link">Título</a></h3>
+            <p class="tarjeta__meta">Año · Tipo · Género</p>
+          </div>
+        </article>
+      </li>
+    </template>
+  </main>
+
+  <footer class="pie">
+    <div class="container-fluid px-3 px-md-4 px-xl-5">
+      <nav aria-label="Información y ayuda">
+        <ul class="pie__enlaces">
+          <li><a href="#">Ayuda</a></li>
+          <li><a href="#">Privacidad</a></li>
+          <li><a href="#">Términos</a></li>
+          <li><a href="#">Contacto</a></li>
+        </ul>
+      </nav>
+      <p class="pie__copy">© 2026 STREAMIA · Práctica RA2 de Diseño de Interfaces Web (2.º DAW)</p>
+    </div>
+  </footer>
+
+  <!-- Modal de acceso: formulario con validación (Perfil) -->
+  <div class="modal fade modal-acceso" id="modal-acceso" tabindex="-1" role="dialog" aria-labelledby="modal-acceso-titulo" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title h4" id="modal-acceso-titulo">Accede a STREAMIA</h2>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body">
+          <ul class="nav nav-pills nav-fill mb-4" id="pestanas-acceso" role="tablist">
+            <li class="nav-item" role="presentation">
+              <button class="nav-link active" id="pestana-login" data-bs-toggle="pill" data-bs-target="#panel-login" type="button" role="tab" aria-controls="panel-login" aria-selected="true">Iniciar sesión</button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="pestana-registro" data-bs-toggle="pill" data-bs-target="#panel-registro" type="button" role="tab" aria-controls="panel-registro" aria-selected="false">Crear cuenta</button>
+            </li>
+          </ul>
+
+          <div class="tab-content">
+            <!-- Iniciar sesión -->
+            <div class="tab-pane fade show active" id="panel-login" role="tabpanel" aria-labelledby="pestana-login" tabindex="0">
+              <form id="form-login" class="needs-validation" novalidate>
+                <div class="mb-3">
+                  <label for="login-email" class="form-label">Correo electrónico</label>
+                  <input type="email" class="form-control" id="login-email" name="email" autocomplete="email" required>
+                  <div class="invalid-feedback">Introduce un correo electrónico válido.</div>
+                </div>
+                <div class="mb-3">
+                  <label for="login-clave" class="form-label">Contraseña</label>
+                  <input type="password" class="form-control" id="login-clave" name="clave" autocomplete="current-password" minlength="8" required>
+                  <div class="invalid-feedback">La contraseña debe tener al menos 8 caracteres.</div>
+                </div>
+                <div class="form-check mb-4">
+                  <input class="form-check-input" type="checkbox" id="login-recordar" name="recordar">
+                  <label class="form-check-label" for="login-recordar">Recordarme</label>
+                </div>
+                <button type="submit" class="btn btn-primary w-100">Iniciar sesión</button>
+                <div class="alert alert-success mt-3 mb-0 d-none" role="status" data-mensaje-exito></div>
+              </form>
+            </div>
+
+            <!-- Crear cuenta -->
+            <div class="tab-pane fade" id="panel-registro" role="tabpanel" aria-labelledby="pestana-registro" tabindex="0">
+              <form id="form-registro" class="needs-validation" novalidate>
+                <div class="mb-3">
+                  <label for="registro-nombre" class="form-label">Nombre</label>
+                  <input type="text" class="form-control" id="registro-nombre" name="nombre" autocomplete="name" minlength="3" required>
+                  <div class="invalid-feedback">El nombre debe tener al menos 3 caracteres.</div>
+                </div>
+                <div class="mb-3">
+                  <label for="registro-email" class="form-label">Correo electrónico</label>
+                  <input type="email" class="form-control" id="registro-email" name="email" autocomplete="email" required>
+                  <div class="invalid-feedback">Introduce un correo electrónico válido.</div>
+                </div>
+                <div class="mb-3">
+                  <label for="registro-clave" class="form-label">Contraseña</label>
+                  <input type="password" class="form-control" id="registro-clave" name="clave" autocomplete="new-password" minlength="8" required aria-describedby="ayuda-clave">
+                  <div id="ayuda-clave" class="form-text">Mínimo 8 caracteres.</div>
+                  <div class="invalid-feedback">La contraseña debe tener al menos 8 caracteres.</div>
+                </div>
+                <div class="mb-3">
+                  <label for="registro-confirmar" class="form-label">Repite la contraseña</label>
+                  <input type="password" class="form-control" id="registro-confirmar" name="confirmar" autocomplete="new-password" required>
+                  <div class="invalid-feedback">Las contraseñas no coinciden.</div>
+                </div>
+                <div class="form-check mb-4">
+                  <input class="form-check-input" type="checkbox" id="registro-terminos" name="terminos" required>
+                  <label class="form-check-label" for="registro-terminos">Acepto los términos de uso</label>
+                  <div class="invalid-feedback">Debes aceptar los términos para continuar.</div>
+                </div>
+                <button type="submit" class="btn btn-primary w-100">Crear cuenta</button>
+                <div class="alert alert-success mt-3 mb-0 d-none" role="status" data-mensaje-exito></div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Aviso del botón Reproducir -->
+  <div class="toast-container position-fixed bottom-0 end-0 p-3">
+    <div class="toast" id="aviso-reproductor" role="status" aria-live="polite" aria-atomic="true">
+      <div class="d-flex">
+        <div class="toast-body">El reproductor de STREAMIA estará disponible próximamente.</div>
+        <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Cerrar"></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript de Bootstrap (incluye Popper), datos y lógica propia -->
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/catalogo.js"></script>
+  <script src="js/script.js"></script>
+</body>
+</html>

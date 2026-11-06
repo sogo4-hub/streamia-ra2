@@ -1,0 +1,58 @@
+// =============================================================
+// _footer.scss
+// Pie de página: Ayuda · Privacidad · Términos · Contacto
+// =============================================================
+
+.pie {
+  margin-top: 2rem;
+  padding-block: 1.5rem;
+  border-top: 1px solid var(--st-borde);
+  background-color: var(--st-fondo);
+
+  &__enlaces {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: .25rem 1rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    @include desde(md) {
+      justify-content: flex-start;
+      gap: .5rem 2rem;
+    }
+  }
+
+  a {
+    color: var(--st-texto-suave);
+    font-size: 1.25rem;
+    font-weight: 700;
+    @include transicion(color);
+    @include foco-visible;
+
+    &:hover {
+      color: $st-primario;
+    }
+
+    @include desde(md) {
+      font-size: 1.5rem;
+      font-weight: 400;
+    }
+
+    @include desde(xl) {
+      font-size: 2rem;
+    }
+  }
+
+  &__copy {
+    margin: 1rem 0 0;
+    color: var(--bs-secondary-color);
+    font-size: .875rem;
+    text-align: center;
+
+    @include desde(md) {
+      text-align: left;
+    }
+  }
+}

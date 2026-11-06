@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="es" data-bs-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="STREAMIA, plataforma de streaming de películas y series.">
+  <title>STREAMIA · Inicio</title>
+
+  <!-- CSS compilado desde /scss/style.scss (Bootstrap 5.3 + estilos propios + fuente Inter local) -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Aplica el tema guardado antes de pintar la página (evita parpadeos) -->
+  <script>
+    try {
+      document.documentElement.setAttribute("data-bs-theme", localStorage.getItem("streamia-tema") || "light");
+    } catch (error) { /* sin localStorage: tema claro */ }
+  </script>
+</head>
+<body>
+  <a class="salto-contenido" href="#contenido">Saltar al contenido</a>
+
+  <header class="cabecera">
+    <nav class="navbar navbar-expand-lg" aria-label="Navegación principal">
+      <div class="container-fluid px-3 px-md-4 px-xl-5">
+        <a class="navbar-brand marca" href="index.html">STREAMIA</a>
+
+        <div class="acciones ms-auto order-lg-last">
+          <button type="button" class="btn-icono btn-tema" id="btn-tema" aria-pressed="false" aria-label="Activar modo oscuro">
+            <svg class="icono-luna" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+            <svg class="icono-sol" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+            <span class="btn-tema__texto d-none d-xxl-inline">Modo oscuro</span>
+          </button>
+          <button type="button" class="btn-icono" data-bs-toggle="modal" data-bs-target="#modal-acceso" aria-label="Perfil: iniciar sesión o registrarse">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>
+            <span class="d-none d-lg-inline">Perfil</span>
+          </button>
+        </div>
+
+        <button class="navbar-toggler ms-2" type="button" data-bs-toggle="collapse" data-bs-target="#menu" aria-controls="menu" aria-expanded="false" aria-label="Abrir o cerrar el menú">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="menu">
+          <ul class="navbar-nav menu-principal">
+            <li class="nav-item"><a class="nav-link" href="index.html" data-nav="inicio" aria-current="page">Inicio</a></li>
+            <li class="nav-item"><a class="nav-link" href="buscar.html?tipo=pelicula" data-nav="peliculas">Películas</a></li>
+            <li class="nav-item"><a class="nav-link" href="buscar.html?tipo=serie" data-nav="series">Series</a></li>
+            <li class="nav-item"><a class="nav-link" href="buscar.html?lista=mi-lista" data-nav="mi-lista">Mi lista</a></li>
+          </ul>
+          <ul class="navbar-nav menu-usuario me-lg-3">
+            <li class="nav-item"><a class="nav-link" href="buscar.html" data-nav="buscar">Buscar</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main id="contenido">
+    <!-- Película destacada -->
+    <section class="destacado" aria-labelledby="destacado-titulo">
+      <div class="container-fluid px-3 px-md-4 px-xl-5">
+        <div class="row g-4 align-items-center">
+          <div class="col-12 col-md-6 col-xl-5">
+            <h1 id="destacado-titulo" class="destacado__titulo">Senderos de gloria</h1>
+            <p class="destacado__descripcion">Una cruda historia sobre las consecuencias de la guerra a nivel personal.</p>
+            <div class="destacado__acciones">
+              <a class="btn btn-primary btn-destacado" href="detalle.html?id=senderos-de-gloria">Ver ahora</a>
+              <button type="button" class="btn btn-primary btn-destacado btn-mi-lista" data-id="senderos-de-gloria" aria-pressed="false">Mi lista</button>
+            </div>
+          </div>
+          <div class="col-md-6 offset-xl-1 d-none d-md-block">
+            <figure class="destacado__imagen">
+              <img class="imagen-adaptable" src="img/senderos-de-gloria_horizontal.jpg" width="807" height="356" alt="Fotograma de Senderos de gloria: Kirk Douglas, con casco, en una trinchera">
+            </figure>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="categoria" aria-labelledby="tendencias-titulo">
+      <div class="container-fluid px-3 px-md-4 px-xl-5">
+        <h2 id="tendencias-titulo" class="titulo-seccion">Tendencias ahora</h2>
+      <ul class="fila row flex-nowrap g-3">
+        <li class="col-7 col-sm-5 col-md-4 col-lg-3 col-xl-2">
+          <article class="tarjeta">
+            <img class="tarjeta__cartel" src="img/dune-parte-dos.jpg" width="600" height="900" alt="Cartel de Dune: Parte dos" loading="lazy">
+            <div class="tarjeta__cuerpo">
+              <h3 class="tarjeta__titulo"><a href="detalle.html?id=dune-parte-dos" class="stretched-link">Dune: Parte dos</a></h3>
+              <p class="tarjeta__meta">2024 · Película · Ciencia ficción</p>
+            </div>
+          </article>
+        </li>
+        <li class="col-7 col-sm-5 col-md-4 col-lg-3 col-xl-2">
+          <article class="tarjeta">
+            <img class="tarjeta__cartel" src="img/oppenheimer.jpg" width="600" height="900" alt="Cartel de Oppenheimer" loading="lazy">
+            <div class="tarjeta__cuerpo">
+              <h3 class="tarjeta__titulo"><a href="detalle.html?id=oppenheimer" class="stretched-link">Oppenheimer</a></h3>
+              <p class="tarjeta__meta">2023 · Película · Drama</p>
+            </div>
+          </article>
+        </li>
+        <li class="col-7 col-sm-5 col-md-4 col-lg-3 col-xl-2">
+          <article class="tarjeta">
+            <img class="tarjeta__cartel" src="img/shogun.jpg" width="600" height="900" alt="Cartel de Shōgun" loading="lazy">
+            <div class="tarjeta__cuerpo">
+              <h3 class="tarjeta__titulo"><a href="detalle.html?id=shogun" class="stretched-link">Shōgun</a></h3>
+              <p class="tarjeta__meta">2024 · Serie · Drama</p>
+            </div>
+          </article>
+        </li>
+        <li class="col-7 col-sm-5 col-md-4 col-lg-3 col-xl-2">
+          <article class="tarjeta">
+            <img class="tarjeta__cartel" src="img/the-bear.jpg" width="600" height="900" alt="Cartel de The Bear" loading="lazy">
+            <div class="tarjeta__cuerpo">
+              <h3 class="tarjeta__titulo"><a href="detalle.html?id=the-bear" class="stretched-link">The Bear</a></h3>
+              <p class="tarjeta__meta">2022 · Serie · Comedia</p>
+            </div>
+          </article>
+        </li>
+        <li class="col-7 col-sm-5 col-md-4 col-lg-3 col-xl-2">
+          <article class="tarjeta">
+            <img class="tarjeta__cartel" src="img/pobres-criaturas.jpg" width="600" height="900" alt="Cartel de Pobres criaturas" loading="lazy">
+            <div class="tarjeta__cuerpo">
+              <h3 class="tarjeta__titulo"><a href="detalle.html?id=pobres-criaturas" class="stretched-link">Pobres criaturas</a></h3>
+              <p class="tarjeta__meta">2023 · Película · Comedia</p>
+            </div>
+          </article>
+        </li>
+        <li class="col-7 col-sm-5 col-md-4 col-lg-3 col-xl-2">
+          <article class="tarjeta">
+            <img class="tarjeta__cartel" src="img/separacion-severance.jpg" width="600" height="900" alt="Cartel de Separación" loading="lazy">
+            <div class="tarjeta__cuerpo">
+              <h3 class="tarjeta__titulo"><a href="detalle.html?id=separacion-severance" class="stretched-link">Separación</a></h3>
+              <p class="tarjeta__meta">2022 · Serie · Ciencia ficción</p>
+            </div>
+          </article>
+        </li>
+        <li class="col-7 col-sm-5 col-md-4 col-lg-3 col-xl-2">
+          <article class="tarjeta">
+            <img class="tarjeta__cartel" src="img/sin-novedad-en-el-frente.jpg" width="600" height="900" alt="Cartel de Sin novedad en el frente" loading="lazy">
+            <div class="tarjeta__cuerpo">
+              <h3 class="tarjeta__titulo"><a href="detalle.html?id=sin-novedad-en-el-frente" class="stretched-link">Sin novedad en el frente</a></h3>
+              <p class="tarjeta__meta">2022 · Película · Bélico</p>
+            </div>
+          </article>
+        </li>
+        <li class="col-7 col-sm-5 col-md-4 col-lg-3 col-xl-2">
+          <article class="tarjeta">
+            <img class="tarjeta__cartel" src="img/1917.jpg" width="600" height="900" alt="Cartel de 1917" loading="lazy">
+            <div class="tarjeta__cuerpo">
+              <h3 class="tarjeta__titulo"><a href="detalle.html?id=1917" class="stretched-link">1917</a></h3>
+              <p class="tarjeta__meta">2019 · Película · Bélico</p>
+            </div>
+          </article>
+        </li>
+      </ul>
+      </div>
+    </section>
+
+    <section class="categoria" aria-labelledby="seguir-titulo">
+      <div class="container-fluid px-3 px-md-4 px-xl-5">
+        <h2 id="seguir-titulo" class="titulo-seccion">Seguir viendo</h2>
+      <ul class="fila row flex-nowrap g-3">
+        <li class="col-7 col-sm-5 col-md-4 col-lg-3 col-xl-2">
+          <article class="tarjeta">
+            <img class="tarjeta__cartel" src="img/breaking-bad.jpg" width="600" height="900" alt="Cartel de Breaking Bad" loading="lazy">
+            <div class="tarjeta__cuerpo">
+              <h3 class="tarjeta__titulo"><a href="detalle.html?id=breaking-bad" class="stretched-link">Breaking Bad</a></h3>
+              <p class="tarjeta__meta">2008 · Serie · Drama</p>
+              <div class="progress" role="progressbar" aria-label="Visto de Breaking Bad" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100">
+                <div class="progress-bar" style="width: 65%"></div>
+              </div>
+            </div>
+          </article>
+        </li>
+        <li class="col-7 col-sm-5 col-md-4 col-lg-3 col-xl-2">
+          <article class="tarjeta">
+            <img class="tarjeta__cartel" src="img/el-padrino.jpg" width="600" height="900" alt="Cartel de El padrino" loading="lazy">
+            <div class="tarjeta__cuerpo">
+              <h3 class="tarjeta__titulo"><a href="detalle.html?id=el-padrino" class="stretched-link">El padrino</a></h3>
+              <p class="tarjeta__meta">1972 · Película · Drama</p>
+              <div class="progress" role="progressbar" aria-label="Visto de El padrino" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100">
+                <div class="progress-bar" style="width: 40%"></div>
+              </div>
+            </div>
+          </article>
+        </li>
+        <li class="col-7 col-sm-5 col-md-4 col-lg-3 col-xl-2">
+          <article class="tarjeta">
+            <img class="tarjeta__cartel" src="img/dark.jpg" width="600" height="900" alt="Cartel de Dark" loading="lazy">
+            <div class="tarjeta__cuerpo">
+              <h3 class="tarjeta__titulo"><a href="detalle.html?id=dark" class="stretched-link">Dark</a></h3>
+              <p class="tarjeta__meta">2017 · Serie · Ciencia ficción</p>
+              <div class="progress" role="progressbar" aria-label="Visto de Dark" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
+                <div class="progress-bar" style="width: 20%"></div>
+              </div>
+            </div>
+          </article>
+        </li>
+        <li class="col-7 col-sm-5 col-md-4 col-lg-3 col-xl-2">
+          <article class="tarjeta">
+            <img class="tarjeta__cartel" src="img/blade-runner.jpg" width="600" height="900" alt="Cartel de Blade Runner" loading="lazy">
+            <div class="tarjeta__cuerpo">
+              <h3 class="tarjeta__titulo"><a href="detalle.html?id=blade-runner" class="stretched-link">Blade Runner</a></h3>
+              <p class="tarjeta__meta">1982 · Película · Ciencia ficción</p>
+              <div class="progress" role="progressbar" aria-label="Visto de Blade Runner" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">
+                <div class="progress-bar" style="width: 85%"></div>
+              </div>
+            </div>
+          </article>
+        </li>
+        <li class="col-7 col-sm-5 col-md-4 col-lg-3 col-xl-2">
+          <article class="tarjeta">
+            <img class="tarjeta__cartel" src="img/the-office.jpg" width="600" height="900" alt="Cartel de The Office" loading="lazy">
+            <div class="tarjeta__cuerpo">
+              <h3 class="tarjeta__titulo"><a href="detalle.html?id=the-office" class="stretched-link">The Office</a></h3>
+              <p class="tarjeta__meta">2005 · Serie · Comedia</p>
+              <div class="progress" role="progressbar" aria-label="Visto de The Office" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+                <div class="progress-bar" style="width: 50%"></div>
+              </div>
+            </div>
+          </article>
+        </li>
+        <li class="col-7 col-sm-5 col-md-4 col-lg-3 col-xl-2">
+          <article class="tarjeta">
+            <img class="tarjeta__cartel" src="img/amelie.jpg" width="600" height="900" alt="Cartel de Amélie" loading="lazy">
+            <div class="tarjeta__cuerpo">
+              <h3 class="tarjeta__titulo"><a href="detalle.html?id=amelie" class="stretched-link">Amélie</a></h3>
+              <p class="tarjeta__meta">2001 · Película · Comedia</p>
+              <div class="progress" role="progressbar" aria-label="Visto de Amélie" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">
+                <div class="progress-bar" style="width: 10%"></div>
+              </div>
+            </div>
+          </article>
+        </li>
+      </ul>
+      </div>
+    </section>
+
+    <section class="categoria" aria-labelledby="recomendaciones-titulo">
+      <div class="container-fluid px-3 px-md-4 px-xl-5">
+        <h2 id="recomendaciones-titulo" class="titulo-seccion">Recomendaciones</h2>
+      <ul class="fila row flex-nowrap g-3">
+        <li class="col-7 col-sm-5 col-md-4 col-lg-3 col-xl-2">
+          <article class="tarjeta">
+            <img class="tarjeta__cartel" src="img/la-chaqueta-metalica.jpg" width="600" height="900" alt="Cartel de La chaqueta metálica" loading="lazy">
+            <div class="tarjeta__cuerpo">
+              <h3 class="tarjeta__titulo"><a href="detalle.html?id=la-chaqueta-metalica" class="stretched-link">La chaqueta metálica</a></h3>
+              <p class="tarjeta__meta">1987 · Película · Bélico</p>
+            </div>
+          </article>
+        </li>
+        <li class="col-7 col-sm-5 col-md-4 col-lg-3 col-xl-2">
+          <article class="tarjeta">
+            <img class="tarjeta__cartel" src="img/apocalypse-now.jpg" width="600" height="900" alt="Cartel de Apocalypse Now" loading="lazy">
+            <div class="tarjeta__cuerpo">
+              <h3 class="tarjeta__titulo"><a href="detalle.html?id=apocalypse-now" class="stretched-link">Apocalypse Now</a></h3>
+              <p class="tarjeta__meta">1979 · Película · Bélico</p>
+            </div>
+          </article>
+        </li>
+        <li class="col-7 col-sm-5 col-md-4 col-lg-3 col-xl-2">
+          <article class="tarjeta">
+            <img class="tarjeta__cartel" src="img/salvar-al-soldado-ryan.jpg" width="600" height="900" alt="Cartel de Salvar al soldado Ryan" loading="lazy">
+            <div class="tarjeta__cuerpo">
+              <h3 class="tarjeta__titulo"><a href="detalle.html?id=salvar-al-soldado-ryan" class="stretched-link">Salvar al soldado Ryan</a></h3>
+              <p class="tarjeta__meta">1998 · Película · Bélico</p>
+            </div>
+          </article>
+        </li>
+        <li class="col-7 col-sm-5 col-md-4 col-lg-3 col-xl-2">
+          <article class="tarjeta">
+            <img class="tarjeta__cartel" src="img/hermanos-de-sangre.jpg" width="600" height="900" alt="Cartel de Hermanos de sangre" loading="lazy">
+            <div class="tarjeta__cuerpo">
+              <h3 class="tarjeta__titulo"><a href="detalle.html?id=hermanos-de-sangre" class="stretched-link">Hermanos de sangre</a></h3>
+              <p class="tarjeta__meta">2001 · Serie · Bélico</p>
+            </div>
+          </article>
+        </li>
+        <li class="col-7 col-sm-5 col-md-4 col-lg-3 col-xl-2">
+          <article class="tarjeta">
+            <img class="tarjeta__cartel" src="img/1917.jpg" width="600" height="900" alt="Cartel de 1917" loading="lazy">
+            <div class="tarjeta__cuerpo">
+              <h3 class="tarjeta__titulo"><a href="detalle.html?id=1917" class="stretched-link">1917</a></h3>
+              <p class="tarjeta__meta">2019 · Película · Bélico</p>
+            </div>
+          </article>
+        </li>
+        <li class="col-7 col-sm-5 col-md-4 col-lg-3 col-xl-2">
+          <article class="tarjeta">
+            <img class="tarjeta__cartel" src="img/sin-novedad-en-el-frente.jpg" width="600" height="900" alt="Cartel de Sin novedad en el frente" loading="lazy">
+            <div class="tarjeta__cuerpo">
+              <h3 class="tarjeta__titulo"><a href="detalle.html?id=sin-novedad-en-el-frente" class="stretched-link">Sin novedad en el frente</a></h3>
+              <p class="tarjeta__meta">2022 · Película · Bélico</p>
+            </div>
+          </article>
+        </li>
+        <li class="col-7 col-sm-5 col-md-4 col-lg-3 col-xl-2">
+          <article class="tarjeta">
+            <img class="tarjeta__cartel" src="img/el-padrino.jpg" width="600" height="900" alt="Cartel de El padrino" loading="lazy">
+            <div class="tarjeta__cuerpo">
+              <h3 class="tarjeta__titulo"><a href="detalle.html?id=el-padrino" class="stretched-link">El padrino</a></h3>
+              <p class="tarjeta__meta">1972 · Película · Drama</p>
+            </div>
+          </article>
+        </li>
+        <li class="col-7 col-sm-5 col-md-4 col-lg-3 col-xl-2">
+          <article class="tarjeta">
+            <img class="tarjeta__cartel" src="img/blade-runner.jpg" width="600" height="900" alt="Cartel de Blade Runner" loading="lazy">
+            <div class="tarjeta__cuerpo">
+              <h3 class="tarjeta__titulo"><a href="detalle.html?id=blade-runner" class="stretched-link">Blade Runner</a></h3>
+              <p class="tarjeta__meta">1982 · Película · Ciencia ficción</p>
+            </div>
+          </article>
+        </li>
+      </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="pie">
+    <div class="container-fluid px-3 px-md-4 px-xl-5">
+      <nav aria-label="Información y ayuda">
+        <ul class="pie__enlaces">
+          <li><a href="#">Ayuda</a></li>
+          <li><a href="#">Privacidad</a></li>
+          <li><a href="#">Términos</a></li>
+          <li><a href="#">Contacto</a></li>
+        </ul>
+      </nav>
+      <p class="pie__copy">© 2026 STREAMIA · Práctica RA2 de Diseño de Interfaces Web (2.º DAW)</p>
+    </div>
+  </footer>
+
+  <!-- Modal de acceso: formulario con validación (Perfil) -->
+  <div class="modal fade modal-acceso" id="modal-acceso" tabindex="-1" role="dialog" aria-labelledby="modal-acceso-titulo" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title h4" id="modal-acceso-titulo">Accede a STREAMIA</h2>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body">
+          <ul class="nav nav-pills nav-fill mb-4" id="pestanas-acceso" role="tablist">
+            <li class="nav-item" role="presentation">
+              <button class="nav-link active" id="pestana-login" data-bs-toggle="pill" data-bs-target="#panel-login" type="button" role="tab" aria-controls="panel-login" aria-selected="true">Iniciar sesión</button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="pestana-registro" data-bs-toggle="pill" data-bs-target="#panel-registro" type="button" role="tab" aria-controls="panel-registro" aria-selected="false">Crear cuenta</button>
+            </li>
+          </ul>
+
+          <div class="tab-content">
+            <!-- Iniciar sesión -->
+            <div class="tab-pane fade show active" id="panel-login" role="tabpanel" aria-labelledby="pestana-login" tabindex="0">
+              <form id="form-login" class="needs-validation" novalidate>
+                <div class="mb-3">
+                  <label for="login-email" class="form-label">Correo electrónico</label>
+                  <input type="email" class="form-control" id="login-email" name="email" autocomplete="email" required>
+                  <div class="invalid-feedback">Introduce un correo electrónico válido.</div>
+                </div>
+                <div class="mb-3">
+                  <label for="login-clave" class="form-label">Contraseña</label>
+                  <input type="password" class="form-control" id="login-clave" name="clave" autocomplete="current-password" minlength="8" required>
+                  <div class="invalid-feedback">La contraseña debe tener al menos 8 caracteres.</div>
+                </div>
+                <div class="form-check mb-4">
+                  <input class="form-check-input" type="checkbox" id="login-recordar" name="recordar">
+                  <label class="form-check-label" for="login-recordar">Recordarme</label>
+                </div>
+                <button type="submit" class="btn btn-primary w-100">Iniciar sesión</button>
+                <div class="alert alert-success mt-3 mb-0 d-none" role="status" data-mensaje-exito></div>
+              </form>
+            </div>
+
+            <!-- Crear cuenta -->
+            <div class="tab-pane fade" id="panel-registro" role="tabpanel" aria-labelledby="pestana-registro" tabindex="0">
+              <form id="form-registro" class="needs-validation" novalidate>
+                <div class="mb-3">
+                  <label for="registro-nombre" class="form-label">Nombre</label>
+                  <input type="text" class="form-control" id="registro-nombre" name="nombre" autocomplete="name" minlength="3" required>
+                  <div class="invalid-feedback">El nombre debe tener al menos 3 caracteres.</div>
+                </div>
+                <div class="mb-3">
+                  <label for="registro-email" class="form-label">Correo electrónico</label>
+                  <input type="email" class="form-control" id="registro-email" name="email" autocomplete="email" required>
+                  <div class="invalid-feedback">Introduce un correo electrónico válido.</div>
+                </div>
+                <div class="mb-3">
+                  <label for="registro-clave" class="form-label">Contraseña</label>
+                  <input type="password" class="form-control" id="registro-clave" name="clave" autocomplete="new-password" minlength="8" required aria-describedby="ayuda-clave">
+                  <div id="ayuda-clave" class="form-text">Mínimo 8 caracteres.</div>
+                  <div class="invalid-feedback">La contraseña debe tener al menos 8 caracteres.</div>
+                </div>
+                <div class="mb-3">
+                  <label for="registro-confirmar" class="form-label">Repite la contraseña</label>
+                  <input type="password" class="form-control" id="registro-confirmar" name="confirmar" autocomplete="new-password" required>
+                  <div class="invalid-feedback">Las contraseñas no coinciden.</div>
+                </div>
+                <div class="form-check mb-4">
+                  <input class="form-check-input" type="checkbox" id="registro-terminos" name="terminos" required>
+                  <label class="form-check-label" for="registro-terminos">Acepto los términos de uso</label>
+                  <div class="invalid-feedback">Debes aceptar los términos para continuar.</div>
+                </div>
+                <button type="submit" class="btn btn-primary w-100">Crear cuenta</button>
+                <div class="alert alert-success mt-3 mb-0 d-none" role="status" data-mensaje-exito></div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript de Bootstrap (incluye Popper), datos y lógica propia -->
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/script.js"></script>
+</body>
+</html>

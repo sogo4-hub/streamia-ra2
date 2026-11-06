@@ -1,0 +1,56 @@
+// =============================================================
+// _botones.scss
+// Botones del UI Kit: Default, Hover, Focus y Disabled.
+// Se sobrescribe .btn-primary mediante las variables CSS que
+// Bootstrap 5.3 expone en cada botón (sin usar !important).
+// =============================================================
+
+.btn-primary {
+  --bs-btn-color: #{$st-texto};
+  --bs-btn-bg: #{$st-primario};
+  --bs-btn-border-color: #{$st-primario};
+  --bs-btn-hover-color: #{$st-texto};
+  --bs-btn-hover-bg: #{$st-primario-hover};
+  --bs-btn-hover-border-color: #{$st-primario-hover};
+  --bs-btn-active-color: #{$st-texto};
+  --bs-btn-active-bg: #{$st-primario-hover};
+  --bs-btn-active-border-color: #{$st-primario-hover};
+  --bs-btn-disabled-color: #{$st-deshabilitado-txt};
+  --bs-btn-disabled-bg: #{$st-deshabilitado};
+  --bs-btn-disabled-border-color: #{$st-deshabilitado};
+  --bs-btn-disabled-opacity: 1;
+  @include transicion(background-color, border-color, transform);
+
+  &:hover {
+    transform: translateY(-1px);
+  }
+
+  // Focus del UI Kit: #E11D48 + borde de 2px (blanco en oscuro)
+  &:focus-visible {
+    border-color: var(--st-texto);
+    box-shadow: 0 0 0 2px var(--st-texto);
+  }
+}
+
+// Botones del destacado (151px de ancho en Figma)
+.btn-destacado {
+  min-width: 9.5rem;
+}
+
+// Botones de la ficha de detalle (281px en Figma)
+.btn-ficha {
+  width: 100%;
+
+  @include desde(sm) {
+    width: auto;
+    min-width: 17.5rem;
+  }
+}
+
+// Estado "añadido" del botón Mi lista (lo activa script.js)
+.btn-mi-lista[aria-pressed="true"] {
+  --bs-btn-bg: #{$st-exito};
+  --bs-btn-border-color: #{$st-exito};
+  --bs-btn-hover-bg: #{$st-exito-hover};
+  --bs-btn-hover-border-color: #{$st-exito-hover};
+}

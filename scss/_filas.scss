@@ -1,0 +1,27 @@
+// =============================================================
+// _filas.scss
+// Filas de contenido con desplazamiento horizontal.
+// Usan .row y .col-* de Bootstrap con .flex-nowrap.
+// =============================================================
+
+.categoria {
+  padding-block: 1rem;
+
+  @include desde(lg) {
+    padding-block: 1.5rem;
+  }
+}
+
+.fila {
+  padding: .75rem 0 1.25rem;       // hueco para el marco de hover/focus
+  margin-bottom: 0;
+  list-style: none;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: .75rem;
+
+  > li {
+    scroll-snap-align: start;
+  }
+}

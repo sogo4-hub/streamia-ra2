@@ -1,0 +1,60 @@
+// =============================================================
+// _base.scss
+// Estilos globales que complementan el reboot de Bootstrap.
+// =============================================================
+
+body {
+  background-color: var(--st-fondo);
+  color: var(--st-texto);
+  @include transicion(background-color, color);
+}
+
+// Encabezados con la escala del UI Kit (mobile-first)
+h1,
+.h1 {
+  font-size: 2rem;
+
+  @include desde(md) {
+    font-size: $h1-font-size;
+  }
+}
+
+h2,
+.h2 {
+  font-size: 1.5rem;
+
+  @include desde(md) {
+    font-size: $h2-font-size;
+  }
+}
+
+// Enlace para saltar al contenido (accesibilidad con teclado)
+.salto-contenido {
+  position: absolute;
+  top: -100px;
+  left: 1rem;
+  z-index: $zindex-fixed + 10;
+  padding: .5rem 1rem;
+  border-radius: $border-radius;
+  background-color: $st-primario;
+  color: $st-texto;
+
+  &:focus {
+    top: 1rem;
+  }
+}
+
+// Título de sección de las filas (rosa, como en Figma)
+.titulo-seccion {
+  margin-bottom: 1rem;
+  color: $st-primario;
+  font-weight: 400;
+}
+
+// Imágenes que se adaptan al contenedor
+.imagen-adaptable {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}

@@ -1,0 +1,17 @@
+// =============================================================
+// _temas.scss
+// Hoja de estilos alternativa: modo claro / modo oscuro.
+// script.js alterna el atributo data-bs-theme de <html>;
+// Bootstrap cambia sus colores y aquí cambiamos los nuestros.
+// =============================================================
+
+// Tema claro: es el tema por defecto
+:root,
+[data-bs-theme="light"] {
+  @include propiedades-tema($tema-claro);
+}
+
+// Tema oscuro: el diseño original de Figma
+[data-bs-theme="dark"] {
+  @include propiedades-tema($tema-oscuro);
+}

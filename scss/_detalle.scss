@@ -1,0 +1,123 @@
+// =============================================================
+// _detalle.scss
+// Ficha de detalle de una película.
+// =============================================================
+
+.detalle {
+  padding-block: 1.5rem 2rem;
+
+  &__titulo {
+    margin-bottom: .25rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-align: center;
+
+    @include desde(md) {
+      font-size: 2rem;
+      font-weight: 400;
+      text-align: left;
+    }
+  }
+
+  &__datos {
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-align: center;
+
+    @include desde(md) {
+      color: var(--bs-secondary-color);
+      font-size: 1rem;
+      font-weight: 400;
+      text-align: left;
+    }
+  }
+
+  &__acciones {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+
+    @include desde(sm) {
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 1rem 7rem;
+    }
+  }
+
+  // Cartel vertical (2:3)
+  &__poster {
+    max-width: 12rem;      // móvil: centrado y pequeño, como en Figma
+    margin: 0 auto;
+
+    img {
+      aspect-ratio: 2 / 3;
+      border-radius: $border-radius;
+    }
+
+    @include desde(md) {
+      max-width: 22rem;
+    }
+  }
+
+  &__subtitulo {
+    margin: 0 0 .5rem;
+    color: $st-primario;
+    font-size: 1.25rem;
+    font-weight: 500;
+
+    &:not(:first-child) {
+      margin-top: 1.5rem;
+    }
+  }
+
+  &__argumento {
+    max-width: 65ch;
+    margin: 0;
+    color: var(--st-texto-suave);
+    font-size: 1.125rem;
+
+    @include desde(lg) {
+      font-size: 1.25rem;
+    }
+  }
+}
+
+// Ficha técnica (lista de descripción)
+.ficha {
+  margin: 0;
+  font-size: 1.125rem;
+
+  dt,
+  dd {
+    display: inline;
+    margin: 0;
+  }
+
+  dt {
+    font-weight: 500;
+  }
+
+  > div {
+    margin-bottom: .25rem;
+  }
+
+  @include desde(lg) {
+    font-size: 1.25rem;
+  }
+}
+
+// Título de las recomendaciones relacionadas (blanco en Figma)
+.titulo-relacionadas {
+  margin-bottom: 1rem;
+  color: var(--st-texto);
+  font-weight: 400;
+}
+
+// Icono dentro de los botones (Reproducir, Mi lista)
+.btn svg {
+  width: 1.125rem;
+  height: 1.125rem;
+  margin-right: .375rem;
+  vertical-align: -.15em;
+}

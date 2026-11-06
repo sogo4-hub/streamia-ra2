@@ -1,0 +1,79 @@
+// =============================================================
+// _cards.scss
+// Componente Card / Content del UI Kit (Default, Hover, Focus).
+// =============================================================
+
+.tarjeta {
+  position: relative;
+  height: 100%;
+  padding: .625rem .625rem 1rem;
+  border: 1px solid #000;
+  border-radius: $border-radius;
+  background-color: $st-secundario;
+  color: $st-texto;
+  @include transicion(transform, outline-color);
+
+  // Cartel de la película o serie (2:3)
+  &__cartel {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 2 / 3;
+    object-fit: cover;
+    border-radius: .25rem;
+    background-color: rgba(0, 0, 0, .25);
+  }
+
+  // Zona de texto, separada por la línea discontinua del UI Kit
+  &__cuerpo {
+    margin-top: .625rem;
+    padding-top: .5rem;
+    border-top: 2px dashed $st-texto;
+  }
+
+  &__titulo {
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.5;
+
+    a {
+      color: inherit;
+
+      // El foco lo dibuja la tarjeta completa (:focus-within)
+      &:focus {
+        outline: none;
+      }
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+
+  &__meta {
+    margin: 0;
+    color: $st-texto-suave;
+    font-size: .875rem;
+  }
+
+  // Barra de progreso de "Seguir viendo"
+  .progress {
+    --bs-progress-height: .375rem;
+    --bs-progress-bg: rgba(255, 255, 255, .3);
+    --bs-progress-bar-bg: #{$st-texto};
+    margin-top: .75rem;
+  }
+
+  // Hover: marco exterior (UI Kit › Card / Hover)
+  &:hover {
+    outline: 1px solid var(--st-tarjeta-hover);
+    outline-offset: 6px;
+    transform: translateY(-4px);
+  }
+
+  // Focus: marco rosa de 2px (UI Kit › Card / Focus)
+  &:focus-within {
+    outline: 2px solid $st-primario;
+    outline-offset: 6px;
+  }
+}

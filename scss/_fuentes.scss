@@ -1,0 +1,17 @@
+// =============================================================
+// _fuentes.scss
+// Tipografía Inter (UI Kit) servida en local desde /fonts.
+// La ruta es relativa al CSS compilado (/css/style.css).
+// =============================================================
+
+$st-pesos-fuente: (400, 500, 700);
+
+@each $peso in $st-pesos-fuente {
+  @font-face {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: $peso;
+    font-display: swap;
+    src: url("../fonts/inter-latin-#{$peso}-normal.woff2") format("woff2");
+  }
+}

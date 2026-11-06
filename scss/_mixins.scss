@@ -1,0 +1,44 @@
+// =============================================================
+// _mixins.scss
+// Mixins reutilizables. Se importa DESPUÉS de Bootstrap para
+// poder usar sus funciones y su mixin media-breakpoint-up().
+// =============================================================
+
+// Media query mobile-first con los breakpoints de Bootstrap:
+// sm 576px · md 768px · lg 992px · xl 1200px · xxl 1400px
+//   @include desde(lg) { ... }
+@mixin desde($breakpoint) {
+  @include media-breakpoint-up($breakpoint) {
+    @content;
+  }
+}
+
+// Convierte un mapa de Sass en propiedades CSS --st-*
+@mixin propiedades-tema($mapa) {
+  @each $nombre, $valor in $mapa {
+    --st-#{$nombre}: #{$valor};
+  }
+}
+
+// Anillo de foco accesible SOLO para navegación con teclado
+@mixin foco-visible($color: $st-primario, $separacion: 3px) {
+  &:focus {
+    outline: none;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color;
+    outline-offset: $separacion;
+  }
+}
+
+// Transición estándar de las microinteracciones
+@mixin transicion($propiedades...) {
+  transition-property: $propiedades;
+  transition-duration: .2s;
+  transition-timing-function: ease-in-out;
+
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+  }
+}
